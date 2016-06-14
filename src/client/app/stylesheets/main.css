@@ -1,0 +1,42 @@
+.card {
+  width: 120px;
+  height: 168px;
+  border-radius: 10px 15px;
+  float: left;
+  margin: 5px;
+  box-shadow: 10px 10px 5px #888888;
+  transition: all .1s linear;
+}
+
+.red-card {background: red;}
+
+.green-card {background: green;}
+
+.blue-card {background: blue;}
+
+.hand {position: absolute;}
+
+.hand .card:hover {transform: translateY(-25px);}
+
+.my-hand{
+  bottom: 20px;
+  left: 20px;
+}
+
+.opponent-hand {
+  top: 20px;
+  left: 20px;
+}
+
+.opponent-hand .card {}
+
+.opponent-hand .card:hover {transform: translateY(25px);}
+
+.play-area {
+  margin: auto;
+  position: absolute;
+  top: 40%;
+  width: 60%;
+
+}
+
