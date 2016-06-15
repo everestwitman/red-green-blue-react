@@ -14,7 +14,7 @@ class Table extends React.Component {
       <div>
         <Hand player="opponent-hand" table={this}/>
           <div className="play-area">
-            {React.addons.createFragment(this.state.currentCard)}
+            {this.state.currentCard}
           </div>
         <Hand player="my-hand" table={this}/>
       </div>

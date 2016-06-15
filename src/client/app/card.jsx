@@ -3,7 +3,6 @@ import React from 'react';
 class Card extends React.Component {
   constructor(props){
     super(props);
-
   }
 
   render(){
@@ -19,10 +18,9 @@ class Card extends React.Component {
   }
 
   _playCard(){
-    this._removeCard();
     this.props.hand.props.table.setState({currentCard: this});
+    this._removeCard();
   }
-
 
   _removeCard(){
     //Remove card from hand's list

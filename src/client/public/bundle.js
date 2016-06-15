@@ -20934,7 +20934,7 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'play-area' },
-	          _react2.default.addons.createFragment(this.state.currentCard)
+	          this.state.currentCard
 	        ),
 	        _react2.default.createElement(_hand2.default, { player: 'my-hand', table: this })
 	      );
@@ -21074,8 +21074,8 @@
 	  }, {
 	    key: '_playCard',
 	    value: function _playCard() {
-	      this._removeCard();
 	      this.props.hand.props.table.setState({ currentCard: this });
+	      this._removeCard();
 	    }
 	  }, {
 	    key: '_removeCard',
