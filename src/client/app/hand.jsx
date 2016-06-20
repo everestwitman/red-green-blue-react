@@ -25,7 +25,7 @@ class Hand extends React.Component {
     var colors = ["red","green","blue"];
     for (var i = 0; i <= 5; i++) {
       let color = colors[Math.floor(Math.random() * 3)];
-      cards.push(<Card color={color} hand={this} id={i}/> )
+      cards.push(<Card color={color} hand={this} key={i}/> )
     }   
     return cards;
   }

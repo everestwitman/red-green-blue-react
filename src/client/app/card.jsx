@@ -26,12 +26,8 @@ class Card extends React.Component {
     //Remove card from hand's list
     let cards = this.props.hand.state.cards;
     let newCards = [];
-    
-    for (var i = 0; i <= cards.length - 1; i++) {
-      if (cards[i].props.id != this.props.id) {
-        newCards.push(cards[i]);
-      }
-    }  
+  
+    newCards = cards.filter(card => card.props.id != this.props.id); 
     this.props.hand.setState({cards: newCards});
   }
 }

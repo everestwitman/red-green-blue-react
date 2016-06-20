@@ -1,6 +1,5 @@
 import React from 'react';
 import Hand from './hand.jsx';
-import PlayArea from './play_area.jsx';
 import Card from './card.jsx';
 //./node_modules/.bin/webpack -d --watch
 

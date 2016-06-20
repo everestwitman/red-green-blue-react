@@ -1,8 +1,16 @@
-import React from 'react';
-import {render} from 'react-dom';
-import Table from './table.jsx';
-import Card from './card.jsx';
-import Hand from './hand.jsx';
+import React from 'react'
+import {render} from 'react-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import Table from './table.jsx'
+import redGreenBlue from './reducers'
+
+// ./node_modules/.bin/webpack -d --watch
+
+
+let store = createStore(redGreenBlue)
+console.log(store);
+
 
 class App extends React.Component {
   render () {
@@ -13,6 +21,7 @@ class App extends React.Component {
       );
   }
 }
+
 
 
 render(<App />, document.getElementById('app'));
