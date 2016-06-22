@@ -12,7 +12,7 @@ function drawCards(){
 const initialState = {
   message: "This is the initial message",
   myHand: drawCards(),
-  opponentHand drawCards(),
+  opponentHand: drawCards(),
   currentCard: {color: "red"}
 }
 
