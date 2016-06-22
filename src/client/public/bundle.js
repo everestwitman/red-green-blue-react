@@ -61,13 +61,13 @@
 	
 	var _reactRedux = __webpack_require__(/*! react-redux */ 181);
 	
-	var _table = __webpack_require__(/*! ./table.jsx */ 190);
-	
-	var _table2 = _interopRequireDefault(_table);
-	
 	var _reducers = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"./reducers\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	
 	var _reducers2 = _interopRequireDefault(_reducers);
+	
+	var _Table = __webpack_require__(/*! ./components/Table */ 191);
+	
+	var _Table2 = _interopRequireDefault(_Table);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -77,10 +77,14 @@
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
+	// This is the node command to run the project
 	// ./node_modules/.bin/webpack -d --watch
 	
 	var store = (0, _redux.createStore)(_reducers2.default);
-	console.log(store);
+	console.log(store.getState());
+	
+	// store.subscribe((console.log(store.getState())))
+	// store.dispatch(playCard());
 	
 	var App = function (_React$Component) {
 	  _inherits(App, _React$Component);
@@ -94,11 +98,7 @@
 	  _createClass(App, [{
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_table2.default, null)
-	      );
+	      return _react2.default.createElement(_Table2.default, null);
 	    }
 	  }]);
 	
@@ -22487,10 +22487,11 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(/*! ./~/process/browser.js */ 3)))
 
 /***/ },
-/* 190 */
-/*!**********************************!*\
-  !*** ./src/client/app/table.jsx ***!
-  \**********************************/
+/* 190 */,
+/* 191 */
+/*!********************************************!*\
+  !*** ./src/client/app/components/Table.js ***!
+  \********************************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22499,215 +22500,36 @@
 	  value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
 	var _react = __webpack_require__(/*! react */ 1);
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _hand = __webpack_require__(/*! ./hand.jsx */ 191);
+	var _Hand = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"Hand\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
 	
-	var _hand2 = _interopRequireDefault(_hand);
-	
-	var _card = __webpack_require__(/*! ./card.jsx */ 192);
-	
-	var _card2 = _interopRequireDefault(_card);
+	var _Hand2 = _interopRequireDefault(_Hand);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	var Table = function Table(_ref) {
+	  var currentCard = _ref.currentCard;
+	  return _react2.default.createElement(
+	    'div',
+	    null,
+	    _react2.default.createElement(_Hand2.default, { player: 'opponent-hand' }),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'play-area' },
+	      _react2.default.createElement(Card, { color: currentCard.color })
+	    ),
+	    _react2.default.createElement(_Hand2.default, { player: 'my-hand' })
+	  );
+	};
 	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	//./node_modules/.bin/webpack -d --watch
-	
-	var Table = function (_React$Component) {
-	  _inherits(Table, _React$Component);
-	
-	  function Table(props) {
-	    _classCallCheck(this, Table);
-	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Table).call(this, props));
-	
-	    _this.state = { currentCard: _react2.default.createElement(_card2.default, { color: 'red', hand: null }) };
-	    return _this;
-	  }
-	
-	  _createClass(Table, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(_hand2.default, { player: 'opponent-hand', table: this }),
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'play-area' },
-	          this.state.currentCard
-	        ),
-	        _react2.default.createElement(_hand2.default, { player: 'my-hand', table: this })
-	      );
-	    }
-	  }]);
-	
-	  return Table;
-	}(_react2.default.Component);
+	Table.propTypes = {
+	  currentCard: _react.PropTypes.object.isRequired
+	};
 	
 	exports.default = Table;
-
-/***/ },
-/* 191 */
-/*!*********************************!*\
-  !*** ./src/client/app/hand.jsx ***!
-  \*********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	var _card = __webpack_require__(/*! ./card.jsx */ 192);
-	
-	var _card2 = _interopRequireDefault(_card);
-	
-	var _table = __webpack_require__(/*! ./table.jsx */ 190);
-	
-	var _table2 = _interopRequireDefault(_table);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Hand = function (_React$Component) {
-	  _inherits(Hand, _React$Component);
-	
-	  function Hand(props) {
-	    _classCallCheck(this, Hand);
-	
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Hand).call(this, props));
-	
-	    _this.state = { cards: _this._drawCards() };
-	    return _this;
-	  }
-	
-	  _createClass(Hand, [{
-	    key: 'render',
-	    value: function render() {
-	      var HANDCLASS = 'hand ' + this.props.player;
-	
-	      return _react2.default.createElement(
-	        'div',
-	        { className: HANDCLASS },
-	        this.state.cards
-	      );
-	    }
-	  }, {
-	    key: '_drawCards',
-	    value: function _drawCards() {
-	      //Randomly returns an array of 6 card components
-	      var cards = [];
-	      var colors = ["red", "green", "blue"];
-	      for (var i = 0; i <= 5; i++) {
-	        var color = colors[Math.floor(Math.random() * 3)];
-	        cards.push(_react2.default.createElement(_card2.default, { color: color, hand: this, key: i }));
-	      }
-	      return cards;
-	    }
-	  }]);
-	
-	  return Hand;
-	}(_react2.default.Component);
-	
-	exports.default = Hand;
-
-/***/ },
-/* 192 */
-/*!*********************************!*\
-  !*** ./src/client/app/card.jsx ***!
-  \*********************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
-	var _react = __webpack_require__(/*! react */ 1);
-	
-	var _react2 = _interopRequireDefault(_react);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-	
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	var Card = function (_React$Component) {
-	  _inherits(Card, _React$Component);
-	
-	  function Card(props) {
-	    _classCallCheck(this, Card);
-	
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(Card).call(this, props));
-	  }
-	
-	  _createClass(Card, [{
-	    key: 'render',
-	    value: function render() {
-	      var CARDCLASS = 'card ' + this.props.color + '-card';
-	      return _react2.default.createElement('div', { className: CARDCLASS, onClick: this._handleClick.bind(this) });
-	    }
-	  }, {
-	    key: '_handleClick',
-	    value: function _handleClick(event) {
-	      event.preventDefault();
-	      this._playCard();
-	    }
-	  }, {
-	    key: '_playCard',
-	    value: function _playCard() {
-	      this.props.hand.props.table.setState({ currentCard: this });
-	      this._removeCard();
-	    }
-	  }, {
-	    key: '_removeCard',
-	    value: function _removeCard() {
-	      var _this2 = this;
-	
-	      //Remove card from hand's list
-	      var cards = this.props.hand.state.cards;
-	      var newCards = [];
-	
-	      newCards = cards.filter(function (card) {
-	        return card.props.id != _this2.props.id;
-	      });
-	      this.props.hand.setState({ cards: newCards });
-	    }
-	  }]);
-	
-	  return Card;
-	}(_react2.default.Component);
-	
-	exports.default = Card;
 
 /***/ }
 /******/ ]);
