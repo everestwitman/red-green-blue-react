@@ -10,7 +10,10 @@ var config = {
     path: BUILD_DIR,
     filename: 'bundle.js'
   },
-    module: {
+  resolve: {
+    extensions: ['', '.js', '.jsx']
+  },
+  module: {
     loaders: [
       {
         test: /\.jsx?/,
