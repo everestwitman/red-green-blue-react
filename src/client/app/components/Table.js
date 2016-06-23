@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react';
-import Hand from 'Hand'
+import Hand from './Hand'
 
 const Table = ({currentCard}) => (
   <div>
