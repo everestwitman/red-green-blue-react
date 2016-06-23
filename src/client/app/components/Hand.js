@@ -14,8 +14,8 @@ const Hand = (props, onCardClick) => {
 
 Hand.propTypes = {
   player: PropTypes.string.isRequired,
-  cards: PropTypes.object.isRequired
-  onCardClick: PropTypes.func.isRequired;
+  cards: PropTypes.object.isRequired,
+  onCardClick: PropTypes.func.isRequired,
 }
 
 export default Hand;
